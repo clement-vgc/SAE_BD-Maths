@@ -8,8 +8,8 @@ DROP TYPE indiceT FORCE;
 
 -- création du type objet
 CREATE OR REPLACE TYPE equipageT AS OBJECT (
-    nom VARCHAR2(50),
-    fonction VARCHAR2(50)
+    nom VARCHAR(50),
+    fonction VARCHAR(50)
 );
 /
 
@@ -21,7 +21,7 @@ CREATE TYPE equipageTabT AS TABLE OF equipageT;
 
 -- création de l'objet avec une méthode
 CREATE OR REPLACE TYPE indiceT AS OBJECT (
-    nom_indice VARCHAR2(50),
+    nom_indice VARCHAR(50),
     valeur NUMBER,
     poids NUMBER,
     MEMBER FUNCTION get_impact RETURN NUMBER
@@ -43,10 +43,10 @@ CREATE TYPE indiceList AS VARRAY(3) OF indiceT;
 
 -- création de la table avec stockage de la nested table
 CREATE TABLE VOL_OR (
-    NumVol VARCHAR2(20),
-    AeroDep VARCHAR2(20),
+    NumVol VARCHAR(20),
+    AeroDep VARCHAR(20),
     DateHeureDep NUMBER,
-    AeroArr VARCHAR2(20),
+    AeroArr VARCHAR(20),
     DateHeureArr NUMBER,
     Equipage equipageTabT,
     IndicesQualite indiceList
