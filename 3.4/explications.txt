@@ -1,0 +1,9 @@
+Les Noeuds représentent les entités principales, ici les aéroports. On va leur donner le label Aeroport. Leurs propriétés seront l'identifiant, 
+le nom, la ville et le pays.
+
+Les Relations représentent les vols directs entre deux aéroports. C'est un graphe orienté, donc la relation part de 
+l'aéroport de départ vers l'aéroport d'arrivée. On va nommer cette relation VOL_VERS. Ses propriétés seront la compagnie et le numéro de vol.
+
+Explication du choix : Le modèle graphe est parfait dans les parcours de chemin. Modéliser les aéroports comme des noeuds et 
+les vols comme des arcs orientés permet d'utiliser les algorithmes de parcours de Neo4J pour trouver les correspondances 
+sans se soucier des jointures relationnelles.
