@@ -42,6 +42,4 @@ def test_get_sur_route_delete_put_retour_405(client):
 
 def test_post_aeroports_sans_json_retour_415_ou_500(client):
     response = client.post("/api/aeroports")
-    # Selon le comportement Flask/Werkzeug, l'absence de JSON peut donner 415
-    # ou être rattrapée dans le code applicatif avec 500.
     assert response.status_code in (415, 500)

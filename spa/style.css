@@ -1,7 +1,6 @@
-/* --- BASE --- */
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: #f8f9fa; /* Gris très clair */
+  background-color: #f8f9fa; 
   color: #333;
   margin: 0;
   padding: 20px;
@@ -14,7 +13,6 @@ h1, h2, h3 {
   color: #2c3e50;
 }
 
-/* --- CONTENEURS PRINCIPAUX --- */
 .container, form {
   width: 100%;
   max-width: 800px;
@@ -22,17 +20,16 @@ h1, h2, h3 {
   padding: 20px 30px;
   margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Petite ombre douce */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
 }
 
-/* --- FORMULAIRES ET INPUTS --- */
 input {
   width: 100%;
   padding: 10px;
   margin: 10px 0 20px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Évite que le padding dépasse la largeur */
+  box-sizing: border-box; 
   font-size: 16px;
 }
 
@@ -42,7 +39,6 @@ input:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-/* --- BOUTONS --- */
 button {
   padding: 10px 15px;
   border: none;
@@ -50,7 +46,7 @@ button {
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
-  background-color: #007bff; /* Bleu classique */
+  background-color: #007bff; 
   color: white;
   transition: background-color 0.2s;
 }
@@ -59,22 +55,20 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Boutons spécifiques */
 .btn-delete {
-  background-color: #dc3545; /* Rouge */
+  background-color: #dc3545; 
 }
 .btn-delete:hover {
   background-color: #c82333;
 }
 
 .btn-edit {
-  background-color: #6c757d; /* Gris foncé */
+  background-color: #6c757d; 
 }
 .btn-edit:hover {
   background-color: #5a6268;
 }
 
-/* --- LISTE DES VOLS --- */
 ul {
   list-style-type: none;
   padding: 0;
@@ -87,15 +81,14 @@ li {
   margin-bottom: 12px;
   padding: 15px 20px;
   border-radius: 6px;
-  border-left: 4px solid #007bff; /* Petite barre bleue à gauche */
+  border-left: 4px solid #007bff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   display: flex;
-  justify-content: space-between; /* Texte à gauche, boutons à droite */
+  justify-content: space-between;
   align-items: center;
 }
 
-/* Boîte pour aligner les boutons "Modifier" et "Supprimer" */
 .action-buttons {
   display: flex;
-  gap: 10px; /* Espace entre les deux boutons */
+  gap: 10px; 
 }

@@ -51,8 +51,6 @@ flutter run -d chrome --web-port=8080
 4. Pour modifier : cliquer sur "Modifier", ajuster départ/arrivée, puis valider.
 5. Pour supprimer : cliquer sur "Supprimer".
 
-Règle importante : un vol ne peut pas avoir le même aéroport en départ et en arrivée.
-
 ## 5. Guide d'utilisation - Application mobile
 
 ## 5.1 Écran "Tous les vols"
@@ -65,13 +63,7 @@ Règle importante : un vol ne peut pas avoir le même aéroport en départ et en
 - Cliquer sur l'étoile pour retirer un vol des favoris.
 - Les favoris sont conservés localement sur le téléphone.
 
-## 6. Messages et erreurs fréquentes
-- Données invalides : vérifier que tous les champs obligatoires sont remplis.
-- Vol déjà existant : même compagnie + même numéro déjà présent.
-- Aéroport déjà existant : id ou nom déjà présent.
-- Aucun chargement : vérifier que l'API est bien lancée.
-
-## 7. Fin de session
+## 6. Fin de session
 Pour arrêter l'application :
 - fermer le serveur Flask (Ctrl+C) ;
 - fermer le serveur HTTP SPA (Ctrl+C) ;

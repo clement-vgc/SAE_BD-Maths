@@ -35,17 +35,8 @@ Objectif principal : permettre la consultation, l’ajout, la modification et la
 - Interdiction des doublons d’aéroport sur id ou nom.
 - Côté interface, un vol ne peut pas avoir le même aéroport de départ et d’arrivée.
 
-## Interfaces et interactions
-### Maquette
-- SPA Web :
-  - section « Gestion des vols » : formulaire + liste + boutons modifier/supprimer ;
-  - section « Gestion des aéroports » : formulaire + liste + boutons modifier/supprimer.
-- Mobile Flutter :
-  - écran 1 « Tous les vols » : recherche + liste + action favori ;
-  - écran 2 « Mes favoris » : liste des favoris sauvegardés localement.
-
-### Choix implémentation
-- Flutter a été choisi car nous travaillions dans un des module actuel.
+## Choix implémentation
+- Flutter a été choisi car nous travaillons dessus dans un des module actuel.
 - Flask a été choisi à la place de PHP car nous étions plus à l’aise avec Flask.
 
 ## Dictionnaire de données
