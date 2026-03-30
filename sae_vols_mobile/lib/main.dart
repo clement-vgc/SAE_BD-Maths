@@ -120,8 +120,9 @@ class ListeVolsPage extends StatefulWidget {
 }
 
 class _ListeVolsPageState extends State<ListeVolsPage> {
-  List vols = [];
-  bool chargement = true;
+  List _tousLesVols = [];
+  List _volsFiltres = [];
+  bool _chargement = true;
 
   @override
   void initState() {
@@ -138,15 +139,35 @@ class _ListeVolsPageState extends State<ListeVolsPage> {
       
       if (response.statusCode == 200) {
         setState(() {
-          vols = json.decode(response.body);
-          chargement = false;
+          _tousLesVols = json.decode(response.body);
+          _volsFiltres = _tousLesVols;
+          _chargement = false;
         });
       }
     } catch (e) {
       setState(() {
-        chargement = false;
+        _chargement = false;
       });
     }
+  }
+
+  void _filtrerVols(String motCle) {
+    setState(() {
+      if (motCle.isEmpty) {
+        _volsFiltres = _tousLesVols;
+      } else {
+        _volsFiltres = _tousLesVols.where((vol) {
+          final depart = vol['depart'].toString().toLowerCase();
+          final arrivee = vol['arrivee'].toString().toLowerCase();
+          final compagnie = vol['compagnie'].toString().toLowerCase();
+          final recherche = motCle.toLowerCase();
+          
+          return depart.contains(recherche) || 
+                 arrivee.contains(recherche) || 
+                 compagnie.contains(recherche);
+        }).toList();
+      }
+    });
   }
 
   @override
@@ -155,33 +176,50 @@ class _ListeVolsPageState extends State<ListeVolsPage> {
       appBar: AppBar(
         title: const Text('Vols Disponibles'),
       ),
-      body: chargement
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: vols.length,
-              itemBuilder: (context, index) {
-                final vol = vols[index];
-                final estFavori = widget.favoris.any((v) => v['compagnie'] == vol['compagnie'] && v['num_vol'] == vol['num_vol']);
-
-                return Card(
-                  margin: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: const Icon(Icons.flight_takeoff, color: Colors.blue),
-                    title: Text('${vol['compagnie']} (Vol n°${vol['num_vol']})'),
-                    subtitle: Text('De : ${vol['depart']} ➔ Vers : ${vol['arrivee']}'),
-                    trailing: IconButton(
-                      icon: Icon(
-                        estFavori ? Icons.star : Icons.star_border,
-                        color: estFavori ? Colors.amber : null,
-                      ),
-                      onPressed: () {
-                        widget.onBasculerFavori(vol);
-                      },
-                    ),
-                  ),
-                );
-              },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: _filtrerVols,
+              decoration: const InputDecoration(
+                labelText: 'Rechercher (ville, compagnie...)',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
             ),
+          ),
+          Expanded(
+            child: _chargement
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.builder(
+                    itemCount: _volsFiltres.length,
+                    itemBuilder: (context, index) {
+                      final vol = _volsFiltres[index];
+                      final estFavori = widget.favoris.any((v) => v['compagnie'] == vol['compagnie'] && v['num_vol'] == vol['num_vol']);
+
+                      return Card(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                        child: ListTile(
+                          leading: const Icon(Icons.flight_takeoff, color: Colors.blue),
+                          title: Text('${vol['compagnie']} (Vol n°${vol['num_vol']})'),
+                          subtitle: Text('De : ${vol['depart']} ➔ Vers : ${vol['arrivee']}'),
+                          trailing: IconButton(
+                            icon: Icon(
+                              estFavori ? Icons.star : Icons.star_border,
+                              color: estFavori ? Colors.amber : null,
+                            ),
+                            onPressed: () {
+                              widget.onBasculerFavori(vol);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -212,7 +250,7 @@ class FavorisPage extends StatelessWidget {
                 final vol = favoris[index];
                 
                 return Card(
-                  margin: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                   child: ListTile(
                     leading: const Icon(Icons.flight_takeoff, color: Colors.blue),
                     title: Text('${vol['compagnie']} (Vol n°${vol['num_vol']})'),
