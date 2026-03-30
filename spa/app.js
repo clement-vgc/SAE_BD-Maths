@@ -212,18 +212,14 @@ async function supprimerVol(compagnie, num_vol) {
 }
 
 function filtrerAeroports() {
-    // On récupère ce que tu as tapé et on le met en minuscules
     const filtre = document.getElementById('recherche-aero').value.toLowerCase();
-    // On cible toutes les lignes <li> de la liste des aéroports
     const lignes = document.querySelectorAll('#liste-aeroports li');
 
     lignes.forEach(li => {
-        // On récupère le texte affiché dans la ligne (Nom + ID)
         const texte = li.querySelector('span').innerText.toLowerCase();
         
-        // Si le texte contient ce que tu as tapé, on l'affiche, sinon on le cache
         if (texte.includes(filtre)) {
-            li.style.display = 'flex'; // 'flex' pour garder l'alignement des boutons
+            li.style.display = 'flex';
         } else {
             li.style.display = 'none';
         }
