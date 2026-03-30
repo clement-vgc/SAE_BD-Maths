@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Vols</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Gestion des Vols</h1>
+    
+    <h2>Liste des vols disponibles</h2>
+    <ul id="liste-vols"></ul>
+
+    <hr>
+
+    <h2>Ajouter un nouveau vol</h2>
+    <form id="form-ajout">
+        <input type="text" id="compagnie" placeholder="Compagnie (ex: Air France)" required>
+        <input type="number" id="num_vol" placeholder="Numéro du vol" required>
+        <input type="text" id="depart" placeholder="Ville de départ" required>
+        <input type="text" id="arrivee" placeholder="Ville d'arrivée" required>
+        <button type="submit">Ajouter le vol</button>
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>
