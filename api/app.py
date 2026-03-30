@@ -14,11 +14,11 @@ def get_vols():
         cursor.execute("SELECT compagnie, num_vol, id_aero_dep AS depart, id_aero_arr AS arrivee FROM Vol")
         
         # --- VERSION SQLITE ---
-        vols = [dict(row) for row in cursor.fetchall()]
+        #vols = [dict(row) for row in cursor.fetchall()]
         
         # --- VERSION ORACLE ---
-        # colonnes = [col[0].lower() for col in cursor.description]
-        # vols = [dict(zip(colonnes, ligne)) for ligne in cursor.fetchall()]
+        colonnes = [col[0].lower() for col in cursor.description]
+        vols = [dict(zip(colonnes, ligne)) for ligne in cursor.fetchall()]
 
         conn.close()
         return jsonify(vols), 200
@@ -38,16 +38,16 @@ def add_vol():
         cursor = conn.cursor()
         
         # --- VERSION SQLITE ---
-        cursor.execute("""
-            INSERT INTO Vol (compagnie, num_vol, id_aero_dep, id_aero_arr)
-            VALUES (?, ?, ?, ?)
-        """, (nouveau_vol['compagnie'], nouveau_vol['num_vol'], nouveau_vol['depart'], nouveau_vol['arrivee']))
+        #cursor.execute("""
+        #    INSERT INTO Vol (compagnie, num_vol, id_aero_dep, id_aero_arr)
+        #    VALUES (?, ?, ?, ?)
+        #""", (nouveau_vol['compagnie'], nouveau_vol['num_vol'], nouveau_vol['depart'], nouveau_vol['arrivee']))
 
         # --- VERSION ORACLE ---
-        # cursor.execute("""
-        #     INSERT INTO Vol (compagnie, num_vol, id_aero_dep, id_aero_arr)
-        #     VALUES (:1, :2, :3, :4)
-        # """, (nouveau_vol['compagnie'], nouveau_vol['num_vol'], nouveau_vol['depart'], nouveau_vol['arrivee']))
+        cursor.execute("""
+            INSERT INTO Vol (compagnie, num_vol, id_aero_dep, id_aero_arr)
+            VALUES (:1, :2, :3, :4)
+        """, (nouveau_vol['compagnie'], nouveau_vol['num_vol'], nouveau_vol['depart'], nouveau_vol['arrivee']))
         
         conn.commit()
         cursor.close()
