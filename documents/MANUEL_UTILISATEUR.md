@@ -33,7 +33,7 @@ Dans un deuxième terminal :
 ```bash
 cd sae_vols_mobile
 flutter pub get
-flutter run -d chrome
+flutter run -d chrome --web-port=8080
 ```
 
 ## 4. Guide d'utilisation - Interface Web 

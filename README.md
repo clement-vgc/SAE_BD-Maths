@@ -69,7 +69,7 @@ Depuis la racine du projet, dans un deuxième terminal :
 ```bash
 cd sae_vols_mobile
 flutter pub get
-flutter run -d chrome
+flutter run -d chrome --web-port=8080
 ```
 
 ## 6) Tests API
