@@ -2,25 +2,51 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des Vols</title>
+    <title>Gestion des Vols et Aéroports</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Gestion des Vols</h1>
+    <h1>Panneau d'Administration</h1>
     
-    <h2>Liste des vols disponibles</h2>
-    <ul id="liste-vols"></ul>
+    <div class="container">
+        <h2>Gestion des Vols</h2>
+        
+        <form id="form-ajout">
+            <h3>Ajouter un nouveau vol</h3>
+            <input type="text" id="compagnie" placeholder="Compagnie (ex: Air France)" required>
+            <input type="number" id="num_vol" placeholder="Numéro du vol" required>
+            
+            <select id="depart" required>
+                <option value="">Sélectionnez l'aéroport de départ...</option>
+            </select>
+            
+            <select id="arrivee" required>
+                <option value="">Sélectionnez l'aéroport d'arrivée...</option>
+            </select>
+            
+            <button type="submit">Ajouter le vol</button>
+        </form>
 
-    <hr>
+        <h3>Liste des vols disponibles</h3>
+        <ul id="liste-vols"></ul>
+    </div>
 
-    <h2>Ajouter un nouveau vol</h2>
-    <form id="form-ajout">
-        <input type="text" id="compagnie" placeholder="Compagnie (ex: Air France)" required>
-        <input type="number" id="num_vol" placeholder="Numéro du vol" required>
-        <input type="text" id="depart" placeholder="Ville de départ" required>
-        <input type="text" id="arrivee" placeholder="Ville d'arrivée" required>
-        <button type="submit">Ajouter le vol</button>
-    </form>
+    <div class="container">
+        <h2>Gestion des Aéroports</h2>
+        
+        <form id="form-aeroport">
+            <h3>Ajouter un aéroport</h3>
+            <input type="number" id="id_aero" placeholder="ID de l'aéroport (ex: 10)" required>
+            <input type="text" id="nom_aero" placeholder="Nom (ex: Orly)" required>
+            <input type="text" id="ville" placeholder="Ville (ex: Paris)" required>
+            <input type="text" id="pays" placeholder="Pays (ex: FR)" required>
+            
+            <button type="submit">Ajouter l'Aéroport</button>
+        </form>
+
+        <h3>Liste des aéroports</h3>
+        <ul id="liste-aeroports"></ul>
+    </div>
 
     <script src="app.js"></script>
 </body>
