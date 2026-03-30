@@ -1,4 +1,4 @@
-# SAE_BD-Maths
+# SAE_Web-BD
 
 Application de gestion de vols et d'aéroports, composée de 3 parties :
 
