@@ -50,7 +50,7 @@ Puis lancer l'API :
 
 ```bash
 cd api
-python app.py
+flask run
 ```
 
 API disponible sur :
