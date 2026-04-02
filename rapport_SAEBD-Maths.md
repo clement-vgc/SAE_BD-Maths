@@ -103,7 +103,7 @@ SELECT DISTINCT ville_arr FROM Trajets;
 
 ### 3.2.1 Implémentation des types complexes
 
-Explication courte :
+Explication :
 - equipageT (objet) + equipageTabT (nested table)
 - indiceT (objet avec méthode get_impact) + indiceList (varray de 3)
 - VOL_OR regroupe attributs simples + collections.
@@ -194,7 +194,7 @@ GROUP BY e.nom;
 
 #### (c) Impact de chaque indice par vol
 
-Explication courte : impact = valeur × poids via get_impact().
+Explication : impact = valeur × poids via get_impact().
 
 ```sql
 SELECT v.NumVol, i.nom_indice, i.get_impact() AS impact
@@ -221,7 +221,7 @@ Prédicats utilisés :
 
 ### 3.3.2 Villes connectées (direct ou avec connexions)
 
-Explication courte :
+Explication :
 - règle de base = vol direct
 - règle récursive = enchaînement compatible sur les horaires.
 
@@ -248,7 +248,7 @@ trajet(paris, A, HD, HA)?
 
 ### 3.3.3 Villes connectées avec un nombre impair de connexions
 
-Explication courte : alternance entre conn_pair et conn_impair.
+Explication : alternance entre conn_pair et conn_impair.
 
 ```datalog
 conn_pair(D, A, HD, HA) :- vol(D, A, HD, HA).
@@ -268,8 +268,8 @@ conn_impair(paris, A, HD, HA)?
 
 ### 3.4.1 Modélisation
 
-Explication courte :
-- nœuds Aeroport
+Explication :
+- noeuds Aeroport
 - arcs orientés VOL_VERS pour les vols directs.
 
 ### 3.4.2 Implémentation Neo4j
